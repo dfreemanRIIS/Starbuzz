@@ -7,8 +7,6 @@ package com.example.dfreeman.starbuzz;
 public class Drink {
     private String name;
     private String description;
-
-
     private int imageResourceId;
 
     public static final Drink[] drinks = {
