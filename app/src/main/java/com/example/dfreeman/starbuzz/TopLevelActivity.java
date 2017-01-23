@@ -30,6 +30,7 @@ public class TopLevelActivity extends AppCompatActivity {
         databaseFile.mkdirs();
         databaseFile.delete();
         db = SQLiteDatabase.openOrCreateDatabase(databaseFile, "password", null);
+        db.close();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
@@ -60,6 +61,7 @@ public class TopLevelActivity extends AppCompatActivity {
                     new String[]{"NAME"},
                     new int[]{android.R.id.text1}, 0);
             listFavorites.setAdapter(favoriteAdapter);
+            db.close();
         } catch(SQLiteException e) {
             Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
@@ -96,6 +98,7 @@ public class TopLevelActivity extends AppCompatActivity {
             CursorAdapter adapter = (CursorAdapter)listFavorites.getAdapter();
             adapter.changeCursor(newCursor);
             favoritesCursor = newCursor;
+            db.close();
         } catch(SQLiteException e) {
             Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
