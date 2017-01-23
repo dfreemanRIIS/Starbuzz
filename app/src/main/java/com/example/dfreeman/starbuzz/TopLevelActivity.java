@@ -2,9 +2,12 @@ package com.example.dfreeman.starbuzz;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
+//import android.database.sqlite.SQLiteDatabase;
+//import android.database.sqlite.SQLiteException;
+//import android.database.sqlite.SQLiteOpenHelper;
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteException;
+import net.sqlcipher.database.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.AdapterView;
@@ -13,6 +16,8 @@ import android.widget.ListView;
 import android.view.View;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class TopLevelActivity extends AppCompatActivity {
 
@@ -23,6 +28,11 @@ public class TopLevelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //this.deleteDatabase("starbuzz");
+        SQLiteDatabase.loadLibs(this);
+        File databaseFile = getDatabasePath("starbuzz");
+        databaseFile.mkdirs();
+        databaseFile.delete();
+        SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(databaseFile, "password", null);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
@@ -42,7 +52,7 @@ public class TopLevelActivity extends AppCompatActivity {
         ListView listFavorites = (ListView)findViewById(R.id.list_favorites);
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
-            db = starbuzzDatabaseHelper.getReadableDatabase();
+            db = starbuzzDatabaseHelper.getReadableDatabase("password");
             favoritesCursor = db.query("DRINK",
                     new String[] { "_id", "NAME"},
                     "FAVORITE = 1",
@@ -80,7 +90,7 @@ public class TopLevelActivity extends AppCompatActivity {
         super.onRestart();
         try {
             StarbuzzDatabaseHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
-            db = starbuzzDatabaseHelper.getReadableDatabase();
+            db = starbuzzDatabaseHelper.getReadableDatabase("password");
             Cursor newCursor = db.query("DRINK",
                     new String[] {"_id", "NAME"},
                     "FAVORITE = 1",
