@@ -1,12 +1,11 @@
 package com.example.dfreeman.starbuzz;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteException;
+import net.sqlcipher.database.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.app.ListActivity;
-import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.view.View;
@@ -29,7 +28,7 @@ public class DrinkCategoryActivity extends ListActivity {
 
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
-            db = starbuzzDatabaseHelper.getReadableDatabase();
+            db = starbuzzDatabaseHelper.getReadableDatabase("password");
 
             cursor = db.query("DRINK",
                     new String[]{"_id", "NAME"},
