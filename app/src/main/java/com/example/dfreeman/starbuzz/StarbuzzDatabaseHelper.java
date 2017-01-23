@@ -2,12 +2,8 @@ package com.example.dfreeman.starbuzz;
 
 import android.content.ContentValues;
 import android.content.Context;
-//import android.database.sqlite.SQLiteDatabase;
-//import android.database.sqlite.SQLiteOpenHelper;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
-
-import java.io.File;
 
 /**
  * Created by dfreeman

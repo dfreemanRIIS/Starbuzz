@@ -1,9 +1,6 @@
 package com.example.dfreeman.starbuzz;
 
 import android.database.Cursor;
-//import android.database.sqlite.SQLiteDatabase;
-//import android.database.sqlite.SQLiteException;
-//import android.database.sqlite.SQLiteOpenHelper;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
 import net.sqlcipher.database.SQLiteOpenHelper;
@@ -30,7 +27,6 @@ public class DrinkCategoryActivity extends ListActivity {
         ListView listDrinks = getListView();
 
         try {
-            //HERE
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             db = starbuzzDatabaseHelper.getReadableDatabase("password");
 

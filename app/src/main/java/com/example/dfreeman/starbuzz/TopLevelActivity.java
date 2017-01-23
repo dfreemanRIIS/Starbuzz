@@ -2,9 +2,6 @@ package com.example.dfreeman.starbuzz;
 
 import android.content.Intent;
 import android.database.Cursor;
-//import android.database.sqlite.SQLiteDatabase;
-//import android.database.sqlite.SQLiteException;
-//import android.database.sqlite.SQLiteOpenHelper;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
 import net.sqlcipher.database.SQLiteOpenHelper;
@@ -32,7 +29,7 @@ public class TopLevelActivity extends AppCompatActivity {
         File databaseFile = getDatabasePath("starbuzz");
         databaseFile.mkdirs();
         databaseFile.delete();
-        SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(databaseFile, "password", null);
+        db = SQLiteDatabase.openOrCreateDatabase(databaseFile, "password", null);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
