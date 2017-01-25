@@ -27,7 +27,6 @@ public class TopLevelActivity extends AppCompatActivity {
         //this.deleteDatabase("starbuzz");
         SQLiteDatabase.loadLibs(this);
         File databaseFile = getDatabasePath("starbuzz");
-        databaseFile.mkdirs();
         db = SQLiteDatabase.openOrCreateDatabase(databaseFile, "password", null);
         db.close();
 

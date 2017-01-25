@@ -9,7 +9,7 @@ import net.sqlcipher.database.SQLiteOpenHelper;
  * Created by dfreeman
  */
 
-public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
+class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "starbuzz";
     private static final int DB_VERSION = 2;
@@ -24,8 +24,8 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVerion) {
-        updateMyDatabase(db, oldVersion, newVerion);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        updateMyDatabase(db, oldVersion, newVersion);
     }
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {

@@ -41,7 +41,7 @@ public class DrinkCategoryActivity extends ListActivity {
                     0);
             listDrinks.setAdapter(listAdapter);
         } catch(SQLiteException e) {
-            Toast toast = Toast.makeText(this, "Dtabase unavailable", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
